@@ -1,0 +1,258 @@
+/* Mobile-Ready Web Styles for HabitTrackerApp */
+
+:root {
+  --primary-color: #6366f1;
+  --secondary-color: #9ca3af;
+  --background-light: #f9fafb;
+  --background-dark: #1f2937;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+  --touch-target-size: 44px;
+}
+
+* {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto Helvetica Neue', sans-serif;
+  background-color: var(--background-light);
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* Ensure content fills viewport */
+#root, #__next, body > div:first-child {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Mobile-first responsive layout */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  /* Adjust padding for mobile */
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Touch-friendly spacing */
+  button, a, [role="button"], [role="tab"] {
+    min-height: var(--touch-target-size);
+    min-width: var(--touch-target-size);
+    padding: 12px;
+    margin: 4px;
+  }
+
+  /* Stack layout on mobile */
+  .flex-row {
+    flex-direction: column;
+  }
+
+  /* Responsive text */
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+}
+
+/* Tablet (portrait) */
+@media (min-width: 481px) and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  /* Moderate padding on tablet */
+  button, a, [role="button"], [role="tab"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 16px;
+  }
+
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 18px; }
+}
+
+/* Tablet (landscape) and desktop */
+@media (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
+
+  /* Comfortable spacing on desktop */
+  button, a, [role="button"], [role="tab"] {
+    min-height: auto;
+    min-width: auto;
+    padding: 8px 16px;
+  }
+
+  /* Two-column layout on desktop */
+  .flex-row {
+    flex-direction: row;
+  }
+
+  h1 { font-size: 32px; }
+  h2 { font-size: 26px; }
+  h3 { font-size: 20px; }
+
+  /* Limit content width on very large screens */
+  .content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+/* Large desktop screens */
+@media (min-width: 1200px) {
+  .content-container {
+    max-width: 1400px;
+    padding: 0 40px;
+  }
+}
+
+/* Navigation bar optimization */
+nav, [role="navigation"] {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+@media (min-width: 769px) {
+  nav, [role="navigation"] {
+    position: static;
+    bottom: auto;
+  }
+}
+
+/* Input fields optimization */
+input, textarea, select {
+  font-size: 16px; /* Prevents auto-zoom on iOS */
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid #d1d5db;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all var(--transition-speed);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: var(--background-dark);
+    color: #fff;
+  }
+
+  input, textarea, select {
+    background-color: #374151;
+    color: #fff;
+    border-color: #4b5563;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    border: 1px solid transparent; /* Prevents flickering */
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduce vertical padding in landscape */
+  body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Smaller font in landscape */
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+}
+
+/* Touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile/touch devices */
+  button, a, input[type="button"], input[type="submit"] {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  /* Remove hover effects */
+  button:hover, a:hover {
+    background-color: inherit;
+  }
+
+  /* Add active state for touch */
+  button:active, a:active {
+    opacity: 0.7;
+  }
+}
+
+/* Desktop hover effects */
+@media (hover: hover) and (pointer: fine) {
+  button:hover, a:hover, [role="button"]:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Safe area for notches (iPhone X+) */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+    padding-top: max(12px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Print styles */
+@media print {
+  nav, footer, [role="navigation"], .no-print {
+    display: none;
+  }
+}
