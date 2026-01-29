@@ -61,13 +61,13 @@ export default function IntroScreen() {
       setCurrentSlide(currentSlide + 1);
     } else {
       storageService.setItem('hasSeenIntro', 'true').catch(e => console.error(e));
-      router.push('/(auth)/signin');
+      router.replace('/(auth)');
     }
   };
 
   const handleSkip = () => {
     storageService.setItem('hasSeenIntro', 'true').catch(e => console.error(e));
-    router.push('/(auth)/signin');
+    router.replace('/(auth)');
   };
 
   const slide = slides[currentSlide];
