@@ -75,7 +75,9 @@ export default function DashboardScreen() {
       {/* Points & XP */}
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="star" size={24} color="#fbbf24" />
+          <View style={styles.iconWrapper}>
+            <Ionicons name="star" size={24} color="#fbbf24" />
+          </View>
           <Text style={styles.cardTitle}>Points & Rewards</Text>
         </View>
         <View style={styles.pointsContainer}>
@@ -93,17 +95,23 @@ export default function DashboardScreen() {
       {/* Daily Stats */}
       <View style={styles.statsGrid}>
         <View style={styles.statCard}>
-          <Ionicons name="checkmark-circle" size={32} color="#10b981" />
+          <View style={styles.statIconContainer}>
+            <Ionicons name="checkmark-circle" size={32} color="#10b981" />
+          </View>
           <Text style={styles.statValue}>{stats.completedToday}</Text>
           <Text style={styles.statLabel}>Today</Text>
         </View>
         <View style={styles.statCard}>
-          <Ionicons name="flame" size={32} color="#f59e0b" />
+          <View style={styles.statIconContainer}>
+            <Ionicons name="flame" size={32} color="#f59e0b" />
+          </View>
           <Text style={styles.statValue}>{stats.currentStreak}</Text>
           <Text style={styles.statLabel}>Streak</Text>
         </View>
         <View style={styles.statCard}>
-          <Ionicons name="pie-chart" size={32} color="#6366f1" />
+          <View style={styles.statIconContainer}>
+            <Ionicons name="pie-chart" size={32} color="#6366f1" />
+          </View>
           <Text style={styles.statValue}>{stats.completionRate}%</Text>
           <Text style={styles.statLabel}>Rate</Text>
         </View>
@@ -112,7 +120,9 @@ export default function DashboardScreen() {
       {/* Daily Challenge */}
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="flash" size={24} color="#ec4899" />
+          <View style={styles.iconWrapper}>
+            <Ionicons name="flash" size={24} color="#ec4899" />
+          </View>
           <Text style={styles.cardTitle}>Daily Challenge</Text>
         </View>
         <View style={styles.challenge}>
@@ -127,24 +137,34 @@ export default function DashboardScreen() {
       {/* Achievements */}
       <View style={styles.card}>
         <View style={styles.cardHeader}>
-          <Ionicons name="medal" size={24} color="#ec4899" />
+          <View style={styles.iconWrapper}>
+            <Ionicons name="medal" size={24} color="#ec4899" />
+          </View>
           <Text style={styles.cardTitle}>Achievements</Text>
         </View>
         <View style={styles.achievementsGrid}>
           <View style={styles.achievement}>
-            <Ionicons name="flame" size={32} color="#f59e0b" />
+            <View style={styles.achievementIconContainer}>
+              <Ionicons name="flame" size={32} color="#f59e0b" />
+            </View>
             <Text style={styles.achievementName}>Hot Streak</Text>
           </View>
           <View style={styles.achievement}>
-            <Ionicons name="trophy" size={32} color="#fbbf24" />
+            <View style={styles.achievementIconContainer}>
+              <Ionicons name="trophy" size={32} color="#fbbf24" />
+            </View>
             <Text style={styles.achievementName}>Champion</Text>
           </View>
           <View style={styles.achievement}>
-            <Ionicons name="heart" size={32} color="#ec4899" />
+            <View style={styles.achievementIconContainer}>
+              <Ionicons name="heart" size={32} color="#ec4899" />
+            </View>
             <Text style={styles.achievementName}>Dedication</Text>
           </View>
           <View style={styles.achievement}>
-            <Ionicons name="star" size={32} color="#a78bfa" />
+            <View style={styles.achievementIconContainer}>
+              <Ionicons name="star" size={32} color="#a78bfa" />
+            </View>
             <Text style={styles.achievementName}>Superstar</Text>
           </View>
         </View>
@@ -205,6 +225,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
+  iconWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 12,
+  },
   cardTitle: {
     fontSize: 18,
     fontWeight: '700',
@@ -257,6 +282,10 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
   },
+  statIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   statValue: {
     fontSize: 28,
     fontWeight: '800',
@@ -306,6 +335,11 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 12,
     alignItems: 'center',
+  },
+  achievementIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
   },
   achievementName: {
     fontSize: 12,
